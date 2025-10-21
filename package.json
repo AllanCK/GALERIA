@@ -1,0 +1,13 @@
+{
+  "name": "galeria-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@supabase/supabase-js": "^2.24.0"
+  },
+  "scripts": {
+    "start": "echo 'Use seu template React (Vite/CRA) para rodar este c\u00f3digo.'"
+  }
+}
