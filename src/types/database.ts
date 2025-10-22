@@ -21,8 +21,11 @@ export interface Cliente {
 export interface Obra {
   id: number;
   nome: string;
-  certificado: string;
-  imagem: string;
+  numero_identificacao: string;
+  colecao: string | null;
+  certificado: string | null;
+  imagem_path: string | null;
+  status: 'cliente' | 'exposicao';
   cliente_id: number | null;
   created_at: string;
 }
@@ -30,7 +33,10 @@ export interface Obra {
 export interface Produto {
   id: number;
   nome: string;
-  imagem: string;
+  tipo_produto: string | null;
+  imagem_path: string | null;
+  obra_id: number | null;
+  quantidade_estoque: number;
   valor: number;
   created_at: string;
 }

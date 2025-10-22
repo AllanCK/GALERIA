@@ -45,26 +45,35 @@ export type Database = {
         Row: {
           certificado: string | null
           cliente_id: number | null
+          colecao: string | null
           created_at: string | null
           id: number
           imagem_path: string | null
           nome: string
+          numero_identificacao: string | null
+          status: string | null
         }
         Insert: {
           certificado?: string | null
           cliente_id?: number | null
+          colecao?: string | null
           created_at?: string | null
           id?: number
           imagem_path?: string | null
           nome: string
+          numero_identificacao?: string | null
+          status?: string | null
         }
         Update: {
           certificado?: string | null
           cliente_id?: number | null
+          colecao?: string | null
           created_at?: string | null
           id?: number
           imagem_path?: string | null
           nome?: string
+          numero_identificacao?: string | null
+          status?: string | null
         }
         Relationships: [
           {
@@ -89,6 +98,9 @@ export type Database = {
           id: number
           imagem_path: string | null
           nome: string
+          obra_id: number | null
+          quantidade_estoque: number
+          tipo_produto: string | null
           valor: number
         }
         Insert: {
@@ -96,6 +108,9 @@ export type Database = {
           id?: number
           imagem_path?: string | null
           nome: string
+          obra_id?: number | null
+          quantidade_estoque?: number
+          tipo_produto?: string | null
           valor?: number
         }
         Update: {
@@ -103,9 +118,20 @@ export type Database = {
           id?: number
           imagem_path?: string | null
           nome?: string
+          obra_id?: number | null
+          quantidade_estoque?: number
+          tipo_produto?: string | null
           valor?: number
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "produtos_obra_id_fkey"
+            columns: ["obra_id"]
+            isOneToOne: false
+            referencedRelation: "obras"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       usuarios: {
         Row: {
