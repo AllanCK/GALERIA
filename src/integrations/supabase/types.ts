@@ -237,7 +237,7 @@ export type Database = {
     }
     Functions: {
       current_user_profile: {
-        Args: Record<PropertyKey, never>
+        Args: never
         Returns: {
           email: string
           id: number
@@ -245,10 +245,8 @@ export type Database = {
           tipo: string
         }[]
       }
-      promote_to_gerente: {
-        Args: { target_uuid: string }
-        Returns: undefined
-      }
+      is_user_gerente: { Args: { user_auth_id: string }; Returns: boolean }
+      promote_to_gerente: { Args: { target_uuid: string }; Returns: undefined }
       sync_user_to_usuarios: {
         Args: {
           p_auth_id: string

@@ -44,7 +44,7 @@ export interface Produto {
 export interface Venda {
   id: number;
   cliente_id: number;
-  vendedor_id: number;
+  vendedor_auth_id: string | null;
   tipo_item: 'obra' | 'produto';
   item_id: number;
   data_venda: string;

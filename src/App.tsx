@@ -10,6 +10,8 @@ import Dashboard from "./pages/Dashboard";
 import Clientes from "./pages/Clientes";
 import Obras from "./pages/Obras";
 import Produtos from "./pages/Produtos";
+import Vendas from "./pages/Vendas";
+import Aniversariantes from "./pages/Aniversariantes";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,6 +30,8 @@ const App = () => (
             <Route path="/clientes" element={<Clientes />} />
             <Route path="/obras" element={<Obras />} />
             <Route path="/produtos" element={<Produtos />} />
+            <Route path="/vendas" element={<Vendas />} />
+            <Route path="/aniversariantes" element={<Aniversariantes />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>

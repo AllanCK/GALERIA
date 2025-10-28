@@ -9,9 +9,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowLeft, Plus, Pencil, Trash2, Image as ImageIcon, Upload } from 'lucide-react';
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { ArrowLeft, Plus, Pencil, Trash2, Image as ImageIcon, Upload, Check, ChevronsUpDown } from 'lucide-react';
 import { toast } from 'sonner';
 import { useForm } from 'react-hook-form';
+import { cn } from '@/lib/utils';
 
 interface ObraFormData {
   nome: string;
@@ -28,10 +31,13 @@ export default function Obras() {
   const navigate = useNavigate();
   const [obras, setObras] = useState<Obra[]>([]);
   const [clientes, setClientes] = useState<Cliente[]>([]);
+  const [colecoes, setColecoes] = useState<string[]>([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingObra, setEditingObra] = useState<Obra | null>(null);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [colecaoOpen, setColecaoOpen] = useState(false);
+  const [colecaoValue, setColecaoValue] = useState('');
   const { register, handleSubmit, reset, setValue, watch } = useForm<ObraFormData>();
 
   const status = watch('status');
@@ -45,6 +51,7 @@ export default function Obras() {
   useEffect(() => {
     loadObras();
     loadClientes();
+    loadColecoes();
   }, []);
 
   const loadObras = async () => {
@@ -73,6 +80,24 @@ export default function Obras() {
       setClientes(data || []);
     } catch (error) {
       console.error('Error loading clientes:', error);
+    }
+  };
+
+  const loadColecoes = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('obras')
+        .select('colecao')
+        .not('colecao', 'is', null)
+        .order('colecao');
+      
+      if (error) throw error;
+      
+      // Extrair coleções únicas
+      const colecoesUnicas = Array.from(new Set(data?.map(item => item.colecao).filter(Boolean) as string[]));
+      setColecoes(colecoesUnicas);
+    } catch (error) {
+      console.error('Error loading colecoes:', error);
     }
   };
 
@@ -156,6 +181,7 @@ export default function Obras() {
       setEditingObra(null);
       setImagePreview(null);
       loadObras();
+      loadColecoes();
     } catch (error) {
       console.error('Error saving obra:', error);
       toast.error('Erro ao salvar obra de arte');
@@ -167,6 +193,7 @@ export default function Obras() {
     setValue('nome', obra.nome);
     setValue('numero_identificacao', obra.numero_identificacao);
     setValue('colecao', obra.colecao || '');
+    setColecaoValue(obra.colecao || '');
     setValue('certificado', obra.certificado || '');
     setValue('status', obra.status);
     setValue('cliente_id', obra.cliente_id?.toString() || '');
@@ -197,6 +224,7 @@ export default function Obras() {
     setIsDialogOpen(false);
     setEditingObra(null);
     setImagePreview(null);
+    setColecaoValue('');
     reset();
   };
 
@@ -246,8 +274,75 @@ export default function Obras() {
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="colecao">Coleção</Label>
-                    <Input id="colecao" {...register('colecao')} />
+                    <Label>Coleção</Label>
+                    <Popover open={colecaoOpen} onOpenChange={setColecaoOpen}>
+                      <PopoverTrigger asChild>
+                        <Button
+                          variant="outline"
+                          role="combobox"
+                          aria-expanded={colecaoOpen}
+                          className="w-full justify-between"
+                        >
+                          {colecaoValue || "Selecione ou adicione..."}
+                          <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        </Button>
+                      </PopoverTrigger>
+                      <PopoverContent className="w-full p-0">
+                        <Command
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' && colecaoValue.trim()) {
+                              e.preventDefault();
+                              const newValue = colecaoValue.trim();
+                              setColecaoValue(newValue);
+                              setValue('colecao', newValue);
+                              setColecaoOpen(false);
+                              setColecoes((prev) => {
+                                const exists = prev.some((c) => c.toLowerCase() === newValue.toLowerCase());
+                                const next = exists ? prev : [...prev, newValue];
+                                return next.sort((a, b) => a.localeCompare(b));
+                              });
+                            }
+                          }}
+                        >
+                          <CommandInput 
+                            placeholder="Buscar ou adicionar coleção..." 
+                            value={colecaoValue}
+                            onValueChange={(value) => {
+                              setColecaoValue(value);
+                              setValue('colecao', value);
+                            }}
+                          />
+                          <CommandList>
+                            <CommandEmpty>
+                              <div className="p-2 text-sm">
+                                Pressione Enter para adicionar "{colecaoValue}"
+                              </div>
+                            </CommandEmpty>
+                            <CommandGroup>
+                              {colecoes.map((colecao) => (
+                                <CommandItem
+                                  key={colecao}
+                                  value={colecao}
+                                  onSelect={(currentValue) => {
+                                    setColecaoValue(currentValue);
+                                    setValue('colecao', currentValue);
+                                    setColecaoOpen(false);
+                                  }}
+                                >
+                                  <Check
+                                    className={cn(
+                                      "mr-2 h-4 w-4",
+                                      colecaoValue === colecao ? "opacity-100" : "opacity-0"
+                                    )}
+                                  />
+                                  {colecao}
+                                </CommandItem>
+                              ))}
+                            </CommandGroup>
+                          </CommandList>
+                        </Command>
+                      </PopoverContent>
+                    </Popover>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="certificado">Nº Certificado</Label>

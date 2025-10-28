@@ -60,6 +60,7 @@ export default function Dashboard() {
     { title: 'Obras de Arte', icon: Palette, path: '/obras', color: 'text-purple-600' },
     { title: 'Produtos', icon: Package, path: '/produtos', color: 'text-green-600' },
     { title: 'Vendas', icon: ShoppingCart, path: '/vendas', color: 'text-accent' },
+    { title: 'Aniversariantes', icon: Cake, path: '/aniversariantes', color: 'text-pink-600' },
   ];
 
   return (
@@ -69,7 +70,7 @@ export default function Dashboard() {
           <div>
             <h1 className="text-4xl font-bold tracking-tight mb-2">Galeria de Arte</h1>
             <p className="text-muted-foreground">
-              Bem-vindo, {profile?.nome} ({profile?.tipo})
+              Bem-vindo, {profile?.nome?.split(' ')[0]} ({profile?.tipo})
             </p>
           </div>
           <Button onClick={handleSignOut} variant="outline">

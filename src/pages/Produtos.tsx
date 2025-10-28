@@ -148,7 +148,7 @@ const Produtos = () => {
       const produtoData = {
         nome: formData.nome,
         tipo_produto: formData.tipo_produto || null,
-        obra_id: formData.obra_id ? parseInt(formData.obra_id) : null,
+        obra_id: formData.obra_id && formData.obra_id !== "none" ? parseInt(formData.obra_id) : null,
         quantidade_estoque: parseInt(formData.quantidade_estoque) || 0,
         valor: parseFloat(formData.valor) || 0,
         imagem_path: formData.imagem_path || null,
@@ -315,7 +315,7 @@ const Produtos = () => {
                       <SelectValue placeholder="Selecione uma obra (opcional)" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">Sem obra associada</SelectItem>
+                      <SelectItem value="none">Sem obra associada</SelectItem>
                       {obras.map((obra) => (
                         <SelectItem key={obra.id} value={obra.id.toString()}>
                           {obra.nome} ({obra.numero_identificacao})
