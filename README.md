@@ -1,73 +1,139 @@
-# Welcome to your Lovable project
+# 🖼️ Galeria de Arte
 
-## Project info
+**Galeria de Arte** é um sistema web desenvolvido para auxiliar no gerenciamento de uma galeria de arte, permitindo o controle de obras, produtos, clientes e vendas em um ambiente visual e intuitivo.  
+O projeto foi construído com **React**, **TailwindCSS** e **Supabase**, unindo modernidade, praticidade e integração em nuvem.
 
-**URL**: https://lovable.dev/projects/969f2f3b-3bed-44ea-93e6-0f81899fde98
+---
 
-## How can I edit this code?
+## 🚀 Objetivo do Projeto
 
-There are several ways of editing your application.
+Criar um sistema completo de gerenciamento para galerias de arte, centralizando informações sobre clientes, obras e vendas, e oferecendo uma interface moderna e acessível para gerentes e vendedores.
 
-**Use Lovable**
+---
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/969f2f3b-3bed-44ea-93e6-0f81899fde98) and start prompting.
+## 💡 Diferenciais
 
-Changes made via Lovable will be committed automatically to this repo.
+- Sistema **focado em galerias de arte**, com cadastros específicos para obras e artistas.  
+- **Carrossel de imagens** na tela inicial, destacando o acervo da galeria.  
+- Design moderno e responsivo com **TailwindCSS**.  
+- Estrutura de dados robusta e integrada ao **Supabase**.  
+- Autenticação de usuários com diferenciação entre **Gerente** e **Vendedor**.  
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## ⚙️ Funcionalidades
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- 🔑 Login e autenticação via Supabase  
+- 👥 Cadastro e gerenciamento de **Clientes**  
+- 🖼️ Cadastro e gerenciamento de **Obras de Arte**  
+- 🎁 Cadastro e gerenciamento de **Produtos**  
+- 💰 Controle completo de **Vendas**  
+- 🎂 Cadastro de **Aniversariantes**  
+- 🧾 (Em desenvolvimento) **Relatórios** de vendas e desempenho  
 
-Follow these steps:
+---
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 🧩 Tecnologias Utilizadas
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+| Categoria | Tecnologia |
+|------------|-------------|
+| Frontend | React + Vite |
+| Estilos | TailwindCSS |
+| Banco de Dados e Autenticação | Supabase |
+| Armazenamento de Imagens | Supabase Buckets (`galeria-assets`) |
+| Controle de Versão | Git & GitHub |
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+## 🧠 Aprendizados
+
+Durante o desenvolvimento, foram aprimorados conhecimentos em:
+- Integração entre **frontend e banco de dados Supabase**.  
+- Uso de **inteligência artificial** para otimizar o desenvolvimento de código.  
+- Criação de **layouts modernos e responsivos** com TailwindCSS.  
+- Melhoria no entendimento de **autenticação e permissões de acesso** em sistemas web.
+
+---
+
+## 📦 Estrutura do Projeto
+
+```
+galeria-arte/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── assets/
+│   └── App.jsx
+├── public/
+├── .env
+├── package.json
+├── supabase/
+│   └── schema.sql
+└── README.md
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🛠️ Como Executar o Projeto
 
-**Use GitHub Codespaces**
+1. **Clonar o repositório**
+   ```bash
+   git clone https://github.com/seu-usuario/galeria-arte.git
+   ```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+2. **Instalar as dependências**
+   ```bash
+   npm install
+   ```
 
-## What technologies are used for this project?
+3. **Configurar o arquivo `.env`**
+   ```
+   VITE_SUPABASE_URL=<sua-url-do-supabase>
+   VITE_SUPABASE_ANON_KEY=<sua-chave-anon>
+   ```
 
-This project is built with:
+4. **Executar o projeto**
+   ```bash
+   npm run dev
+   ```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+5. **Acessar no navegador**
+   ```
+   http://localhost:5173
+   ```
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/969f2f3b-3bed-44ea-93e6-0f81899fde98) and click on Share -> Publish.
+## 📈 Evolução do Projeto
 
-## Can I connect a custom domain to my Lovable project?
+| Etapa | Status |
+|-------|--------|
+| Login e autenticação | ✅ Concluído |
+| Cadastro de clientes | ✅ Concluído |
+| Cadastro de obras e produtos | ✅ Concluído |
+| Vendas e aniversariantes | ✅ Concluído |
+| Relatórios | ⚙️ Em desenvolvimento |
+| Níveis de acesso detalhados | ⚙️ Em planejamento |
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📸 Tela Inicial
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+A tela inicial conta com um **carrossel de imagens** das obras cadastradas, proporcionando uma experiência visual envolvente e representando o acervo da galeria.
+
+---
+
+## 👨‍💻 Desenvolvido por
+
+**Allan Cristian Krause**  
+Projeto acadêmico — *Galeria de Arte*  
+Tecnologias: React, TailwindCSS, Supabase  
+Ano: **2025**
+
+---
+
+## 📝 Licença
+
+Este projeto é distribuído sob a licença **MIT**.  
+Sinta-se à vontade para usar, modificar e compartilhar!
