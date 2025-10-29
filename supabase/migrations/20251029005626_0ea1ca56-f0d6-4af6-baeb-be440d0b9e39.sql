@@ -1,0 +1,22 @@
+-- Inserir mais 20 obras de arte variadas
+INSERT INTO obras (nome, numero_identificacao, colecao, certificado, imagem_path, status, cliente_id) VALUES
+('Fúria Vermelha', 'OA-2024-015', 'Coleção Expressionista', 'CERT-2024-015', '/obras/obra-abstrata-03.jpg', 'exposicao', NULL),
+('Jardim Zen', 'OA-2024-016', 'Coleção Oriental', 'CERT-2024-016', '/obras/obra-oriental-01.jpg', 'cliente', 2),
+('Esplendor Art Deco', 'OA-2024-017', 'Coleção Art Deco', 'CERT-2024-017', '/obras/obra-art-deco-01.jpg', 'exposicao', NULL),
+('Marinheiro Sábio', 'OA-2024-018', 'Coleção Retratos', 'CERT-2024-018', '/obras/obra-retrato-03.jpg', 'cliente', 4),
+('Metrópole Neon', 'OA-2024-019', 'Coleção Futurista', 'CERT-2024-019', '/obras/obra-futurista-01.jpg', 'exposicao', NULL),
+('Floresta Tropical', 'OA-2024-020', 'Coleção Natureza', 'CERT-2024-020', '/obras/obra-natureza-01.jpg', 'cliente', 6),
+('Tempo Derretido', 'OA-2024-021', 'Coleção Surrealista', 'CERT-2024-021', '/obras/obra-surrealista-02.jpg', 'exposicao', NULL),
+('Café Parisiense', 'OA-2024-022', 'Coleção Impressionista', 'CERT-2024-022', '/obras/obra-impressionista-01.jpg', 'cliente', 7),
+('Composição Circular', 'OA-2024-023', 'Coleção Contemporânea', 'CERT-2024-023', '/obras/obra-abstrata-04.jpg', 'exposicao', NULL),
+('Castelo Gótico', 'OA-2024-024', 'Coleção Medieval', 'CERT-2024-024', '/obras/obra-medieval-01.jpg', 'exposicao', NULL),
+('Recife de Corais', 'OA-2024-025', 'Coleção Marina', 'CERT-2024-025', '/obras/obra-marina-01.jpg', 'cliente', 9),
+('Dama Floral', 'OA-2024-026', 'Coleção Art Nouveau', 'CERT-2024-026', '/obras/obra-art-nouveau-01.jpg', 'exposicao', NULL),
+('Dunas ao Amanhecer', 'OA-2024-027', 'Coleção Deserto', 'CERT-2024-027', '/obras/obra-deserto-01.jpg', 'cliente', 10),
+('Pássaro Mecânico', 'OA-2024-028', 'Coleção Steampunk', 'CERT-2024-028', '/obras/obra-steampunk-01.jpg', 'exposicao', NULL),
+('Nebulosa Cósmica', 'OA-2024-029', 'Coleção Astronômica', 'CERT-2024-029', '/obras/obra-cosmica-01.jpg', 'exposicao', NULL),
+('Savana ao Entardecer', 'OA-2024-030', 'Coleção Africana', 'CERT-2024-030', '/obras/obra-africana-01.jpg', 'cliente', 11),
+('Natureza Morta Clássica', 'OA-2024-031', 'Coleção Natureza Morta', 'CERT-2024-031', '/obras/obra-natureza-morta-01.jpg', 'exposicao', NULL),
+('Aurora Boreal', 'OA-2024-032', 'Coleção Nórdica', 'CERT-2024-032', '/obras/obra-nordica-01.jpg', 'cliente', 12),
+('Arte de Rua', 'OA-2024-033', 'Coleção Arte Urbana', 'CERT-2024-033', '/obras/obra-urbana-02.jpg', 'exposicao', NULL),
+('Anjos Celestiais', 'OA-2024-034', 'Coleção Barroca', 'CERT-2024-034', '/obras/obra-barroca-01.jpg', 'cliente', 13);
